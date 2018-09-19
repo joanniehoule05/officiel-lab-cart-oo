@@ -9,8 +9,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import ca.ulaval.glo4002.cart.application.CartApplicationService;
-import ca.ulaval.glo4002.cart.application.ShopApplicationService;
+import ca.ulaval.glo4002.cart.application.cart.CartApplicationService;
+import ca.ulaval.glo4002.cart.application.shop.ShopApplicationService;
 import ca.ulaval.glo4002.cart.domain.cart.Cart;
 import ca.ulaval.glo4002.cart.domain.shop.ShopItem;
 
