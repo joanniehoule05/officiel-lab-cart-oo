@@ -1,4 +1,4 @@
-package ca.ulaval.glo4002.cart.application;
+package ca.ulaval.glo4002.cart.application.cart;
 
 import java.util.List;
 

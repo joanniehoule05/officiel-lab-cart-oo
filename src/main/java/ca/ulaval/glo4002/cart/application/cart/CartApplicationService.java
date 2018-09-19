@@ -1,4 +1,4 @@
-package ca.ulaval.glo4002.cart.application;
+package ca.ulaval.glo4002.cart.application.cart;
 
 import java.util.List;
 
@@ -29,10 +29,6 @@ public class CartApplicationService {
 		cart.addItem(new CartItem(item.getName(), 1));
 
 		cartRepository.persistCarts(carts);
-	}
-
-	public List<Cart> findAllCarts() {
-		return cartRepository.retrieveCarts();
 	}
 
 	private Cart getCartByOwner(String email, List<Cart> carts) {

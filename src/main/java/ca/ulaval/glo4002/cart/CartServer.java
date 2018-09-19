@@ -6,7 +6,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
-import ca.ulaval.glo4002.cart.application.ItemNotFoundException;
+import ca.ulaval.glo4002.cart.application.shop.ItemNotFoundException;
 import ca.ulaval.glo4002.cart.interfaces.rest.CartResource;
 import ca.ulaval.glo4002.cart.interfaces.rest.ShopResource;
 import ca.ulaval.glo4002.cart.interfaces.rest.PersistenceExceptionMapper;

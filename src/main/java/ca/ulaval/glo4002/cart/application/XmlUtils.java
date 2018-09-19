@@ -9,6 +9,9 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import ca.ulaval.glo4002.cart.application.cart.CartList;
+import ca.ulaval.glo4002.cart.application.shop.Shop;
+
 public class XmlUtils {
 
 	public static Marshaller createMarshaller() {

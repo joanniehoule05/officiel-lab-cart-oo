@@ -5,7 +5,7 @@ import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-import ca.ulaval.glo4002.cart.application.ShopApplicationService;
+import ca.ulaval.glo4002.cart.application.shop.ShopApplicationService;
 import ca.ulaval.glo4002.cart.domain.shop.ShopItem;
 
 @Path("/shop")
