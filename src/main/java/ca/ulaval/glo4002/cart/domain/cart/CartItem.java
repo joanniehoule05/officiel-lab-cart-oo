@@ -10,12 +10,16 @@ public class CartItem {
 	@XmlElement
 	private int quantity;
 
-	private CartItem() {
+	@XmlElement
+    private int totalPrice;
+
+    private CartItem() {
 		// JAXB
 	}
 
-	public CartItem(String name, int quantity) {
+	public CartItem(String name, int quantity, int totalPrice) {
 		this.name = name;
 		this.quantity = quantity;
-	}
+        this.totalPrice = totalPrice;
+    }
 }

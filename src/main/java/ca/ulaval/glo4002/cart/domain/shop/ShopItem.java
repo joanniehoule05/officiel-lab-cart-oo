@@ -1,50 +1,18 @@
 package ca.ulaval.glo4002.cart.domain.shop;
 
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
+@XmlSeeAlso({StandardShopItem.class, PrimeShopItem.class})
+public abstract class ShopItem {
+    public abstract String getName();
 
-public class ShopItem {
+    public abstract boolean isAvailable();
 
-	@XmlElement
-	@JsonProperty
-	private String itemSku;
+    public abstract boolean hasSku(String sku);
 
-	@XmlElement
-	@JsonProperty
-	private String name;
+    public abstract int getPrice();
 
-	@XmlElement
-	@JsonProperty
-	private boolean available;
-	
-	@XmlElement
-	@JsonProperty
-	// Ne pas enlever @JsonProperty, ceci sert pour le panneau d'admin où on saisit les items
-	private double profitMarginPercentage;
+    public abstract int getWeight();
 
-	private ShopItem() {
-		// JAXB
-	}
-
-	public ShopItem(String itemSku, String name, double profitMarginPercentage, boolean available) {
-		this.itemSku = itemSku;
-		this.name = name;
-		this.profitMarginPercentage = profitMarginPercentage;
-		this.available = available;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public boolean isAvailable() {
-		return available;
-	}
-
-	public boolean hasSku(String sku) {
-		return this.itemSku.equals(sku);
-	}
-
+    public abstract boolean isPrime();
 }
