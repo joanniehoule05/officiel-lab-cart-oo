@@ -1,4 +1,4 @@
-package ca.ulaval.glo4002.cart.interfaces.rest;
+package ca.ulaval.glo4002.cart.interfaces.rest.mappers;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

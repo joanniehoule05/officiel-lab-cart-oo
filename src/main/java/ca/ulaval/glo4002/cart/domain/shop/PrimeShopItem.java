@@ -46,6 +46,11 @@ public class PrimeShopItem extends ShopItem {
     }
 
     @Override
+    public String getSku() {
+        return itemSku;
+    }
+
+    @Override
     public String getName() {
         return name;
     }

@@ -22,4 +22,16 @@ public class CartItem {
 		this.quantity = quantity;
         this.totalPrice = totalPrice;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
 }

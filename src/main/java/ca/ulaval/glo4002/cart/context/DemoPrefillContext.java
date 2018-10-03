@@ -3,6 +3,7 @@ package ca.ulaval.glo4002.cart.context;
 import java.util.List;
 import java.util.logging.Logger;
 
+import ca.ulaval.glo4002.cart.application.ServiceLocator;
 import ca.ulaval.glo4002.cart.domain.shop.PrimeShopItem;
 import ca.ulaval.glo4002.cart.domain.shop.ShopItem;
 import ca.ulaval.glo4002.cart.domain.shop.ShopRepository;
@@ -11,8 +12,8 @@ import ca.ulaval.glo4002.cart.domain.shop.StandardShopItem;
 class DemoPrefillContext {
     private ShopRepository shopRepository;
 
-    DemoPrefillContext(ShopRepository shopRepository) {
-        this.shopRepository = shopRepository;
+    DemoPrefillContext() {
+        this.shopRepository = ServiceLocator.INSTANCE.resolve(ShopRepository.class);
     }
 
     public void apply() {

@@ -4,6 +4,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 @XmlSeeAlso({StandardShopItem.class, PrimeShopItem.class})
 public abstract class ShopItem {
+    public abstract String getSku();
+
     public abstract String getName();
 
     public abstract boolean isAvailable();

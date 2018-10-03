@@ -1,4 +1,4 @@
-package ca.ulaval.glo4002.cart.interfaces.rest;
+package ca.ulaval.glo4002.cart.interfaces.rest.mappers;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;

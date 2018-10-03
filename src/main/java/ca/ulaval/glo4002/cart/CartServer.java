@@ -8,11 +8,10 @@ import org.glassfish.jersey.servlet.ServletContainer;
 
 import ca.ulaval.glo4002.cart.application.shop.ItemNotFoundException;
 import ca.ulaval.glo4002.cart.context.ApplicationContext;
-import ca.ulaval.glo4002.cart.interfaces.rest.CartResource;
-import ca.ulaval.glo4002.cart.interfaces.rest.PersistenceProvider;
-import ca.ulaval.glo4002.cart.interfaces.rest.ShopResource;
-import ca.ulaval.glo4002.cart.interfaces.rest.PersistenceExceptionMapper;
+import ca.ulaval.glo4002.cart.interfaces.rest.shop.ShopResource;
+import ca.ulaval.glo4002.cart.interfaces.rest.cart.CartResource;
 import ca.ulaval.glo4002.cart.interfaces.rest.filters.CORSFilter;
+import ca.ulaval.glo4002.cart.interfaces.rest.mappers.PersistenceExceptionMapper;
 
 public class CartServer implements Runnable {
 	private static final int PORT = 7222;
@@ -27,7 +26,7 @@ public class CartServer implements Runnable {
     }
 
     private void configureContext() {
-	    new ApplicationContext(PersistenceProvider.getShopRepository()).apply();
+	    new ApplicationContext().apply();
     }
 
     private void startServer() {
@@ -38,6 +37,7 @@ public class CartServer implements Runnable {
         ResourceConfig packageConfig = new ResourceConfig()
                 .registerInstances(createClientResource(), createCartResource())
                 .registerInstances(new PersistenceExceptionMapper(), new ItemNotFoundException())
+                // .register(new ChromeHackersFilter())
                 .register(new CORSFilter());
 
         ServletContainer container = new ServletContainer(packageConfig);
@@ -56,10 +56,10 @@ public class CartServer implements Runnable {
     }
 
     private CartResource createCartResource() {
-		return new CartResource(PersistenceProvider.getCartRepository(), PersistenceProvider.getShopRepository());
+		return new CartResource();
 	}
 
 	private ShopResource createClientResource() {
-		return new ShopResource(PersistenceProvider.getShopRepository());
+		return new ShopResource();
 	}
 }

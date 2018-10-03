@@ -1,4 +1,4 @@
-package ca.ulaval.glo4002.cart.interfaces.rest;
+package ca.ulaval.glo4002.cart.interfaces.rest.cart;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -12,28 +12,32 @@ import javax.ws.rs.core.Response;
 import ca.ulaval.glo4002.cart.application.cart.CartApplicationService;
 import ca.ulaval.glo4002.cart.application.shop.ShopApplicationService;
 import ca.ulaval.glo4002.cart.domain.cart.Cart;
-import ca.ulaval.glo4002.cart.domain.cart.CartRepository;
 import ca.ulaval.glo4002.cart.domain.shop.ShopItem;
-import ca.ulaval.glo4002.cart.domain.shop.ShopRepository;
+import ca.ulaval.glo4002.cart.interfaces.rest.cart.dto.CartAssembler;
+import ca.ulaval.glo4002.cart.interfaces.rest.cart.dto.CartDto;
 
 @Path("/clients/{" + CartResource.EMAIL_PARAMETER + "}/cart")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class CartResource {
-	public static final String EMAIL_PARAMETER = "email";
-	public static final String SKU_PARAMETER = "sku";
+	static final String EMAIL_PARAMETER = "email";
+	private static final String SKU_PARAMETER = "sku";
 
-	private CartApplicationService cartService;
+    private final CartAssembler cartAssembler;
+
+    private CartApplicationService cartService;
 	private ShopApplicationService shopService;
 
-    public CartResource(CartRepository cartRepository, ShopRepository shopRepository) {
-        this.cartService = new CartApplicationService(cartRepository);
-        this.shopService = new ShopApplicationService(shopRepository);
+    public CartResource() {
+        this.cartService = new CartApplicationService();
+        this.shopService = new ShopApplicationService();
+        this.cartAssembler = new CartAssembler();
     }
 
     @GET
-	public Cart getCart(@PathParam(EMAIL_PARAMETER) String email) {
-		return cartService.findOrCreateCartForClient(email);
+	public CartDto getCart(@PathParam(EMAIL_PARAMETER) String email) {
+        Cart cart = cartService.findOrCreateCartForClient(email);
+        return cartAssembler.toDto(cart);
 	}
 
 	@PUT
