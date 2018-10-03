@@ -1,4 +1,4 @@
-package ca.ulaval.glo4002.cart.application;
+package ca.ulaval.glo4002.cart.infrastructure.persistence.xml;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +9,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import ca.ulaval.glo4002.cart.application.PersistenceException;
 import ca.ulaval.glo4002.cart.application.cart.CartList;
 import ca.ulaval.glo4002.cart.application.shop.Shop;
 

@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlElement;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class StandardShopItem extends ShopItem {
+    private static final int PRICE_PER_KG = 2;
 
     @XmlElement
     @JsonProperty
@@ -61,17 +62,7 @@ public class StandardShopItem extends ShopItem {
     }
 
     @Override
-    public int getPrice() {
-        return price;
-    }
-
-    @Override
-    public int getWeight() {
-        return weight;
-    }
-
-    @Override
-    public boolean isPrime() {
-        return false;
+    public int getPriceWithShipping() {
+        return price + weight * PRICE_PER_KG;
     }
 }

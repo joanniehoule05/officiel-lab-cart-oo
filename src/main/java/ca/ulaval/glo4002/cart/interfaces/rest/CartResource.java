@@ -12,7 +12,9 @@ import javax.ws.rs.core.Response;
 import ca.ulaval.glo4002.cart.application.cart.CartApplicationService;
 import ca.ulaval.glo4002.cart.application.shop.ShopApplicationService;
 import ca.ulaval.glo4002.cart.domain.cart.Cart;
+import ca.ulaval.glo4002.cart.domain.cart.CartRepository;
 import ca.ulaval.glo4002.cart.domain.shop.ShopItem;
+import ca.ulaval.glo4002.cart.domain.shop.ShopRepository;
 
 @Path("/clients/{" + CartResource.EMAIL_PARAMETER + "}/cart")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -24,12 +26,12 @@ public class CartResource {
 	private CartApplicationService cartService;
 	private ShopApplicationService shopService;
 
-	public CartResource() {
-		this.cartService = new CartApplicationService();
-		this.shopService = new ShopApplicationService();
-	}
+    public CartResource(CartRepository cartRepository, ShopRepository shopRepository) {
+        this.cartService = new CartApplicationService(cartRepository);
+        this.shopService = new ShopApplicationService(shopRepository);
+    }
 
-	@GET
+    @GET
 	public Cart getCart(@PathParam(EMAIL_PARAMETER) String email) {
 		return cartService.findOrCreateCartForClient(email);
 	}

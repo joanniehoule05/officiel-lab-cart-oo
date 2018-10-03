@@ -1,4 +1,4 @@
-package ca.ulaval.glo4002.cart.application.shop;
+package ca.ulaval.glo4002.cart.infrastructure.persistence.xml;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -9,10 +9,11 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import ca.ulaval.glo4002.cart.application.PersistenceException;
-import ca.ulaval.glo4002.cart.application.XmlUtils;
+import ca.ulaval.glo4002.cart.application.shop.Shop;
+import ca.ulaval.glo4002.cart.domain.shop.ShopRepository;
 import ca.ulaval.glo4002.cart.domain.shop.ShopItem;
 
-public class ShopRepository {
+public class XmlShopRepository implements ShopRepository {
     private static final String SHOP_STORAGE = "shop";
 
     private static File storageFile;
@@ -21,7 +22,8 @@ public class ShopRepository {
         storageFile = XmlUtils.createStorageFile(SHOP_STORAGE);
     }
 
-    public List<ShopItem> readShopFromFile() {
+    @Override
+    public List<ShopItem> listShopItems() {
         Unmarshaller unmarshaller = XmlUtils.createUnmarshaller();
         try {
             return ((Shop) unmarshaller.unmarshal(storageFile)).getItems();
@@ -30,6 +32,7 @@ public class ShopRepository {
         }
     }
 
+    @Override
     public void persistShop(List<ShopItem> items) {
         Marshaller marshaller = XmlUtils.createMarshaller();
         try {

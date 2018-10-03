@@ -4,7 +4,9 @@ import javax.xml.bind.annotation.XmlElement;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class PrimeShopItem extends ShopItem {
+public class FragileShopItem extends ShopItem {
+    private static final int FLAT_PRICE = 5;
+    private static final int PRICE_PER_KG = 3;
 
     @XmlElement
     @JsonProperty
@@ -31,11 +33,7 @@ public class PrimeShopItem extends ShopItem {
     // Ne pas enlever @JsonProperty, ceci sert pour le panneau d'admin où on saisit les items
     private double profitMarginPercentage;
 
-    private PrimeShopItem() {
-        // JAXB
-    }
-
-    public PrimeShopItem(String itemSku, String name, int price, int weight, double profitMarginPercentage,
+    public FragileShopItem(String itemSku, String name, int price, int weight, double profitMarginPercentage,
             boolean available) {
         this.itemSku = itemSku;
         this.name = name;
@@ -62,6 +60,6 @@ public class PrimeShopItem extends ShopItem {
 
     @Override
     public int getPriceWithShipping() {
-        return price;
+        return price + weight * PRICE_PER_KG + FLAT_PRICE;
     }
 }
