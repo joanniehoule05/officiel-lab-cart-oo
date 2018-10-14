@@ -5,7 +5,8 @@ import ca.ulaval.glo4002.cart.domain.shop.ShopRepository;
 public class ApplicationContext {
     private ShopRepository shopRepository;
 
-    public ApplicationContext(ShopRepository shopRepository) {
+    //public ApplicationContext(ShopRepository shopRepository) {
+    public ApplicationContext() {
         this.shopRepository = shopRepository;
     }
 

@@ -11,8 +11,13 @@ public class CartApplicationService {
 
     private CartRepository cartRepository;
 
+    /*
 	public CartApplicationService(CartRepository cartRepository) {
 		this.cartRepository = cartRepository;
+	}*/
+	
+	public CartApplicationService() {
+		this.cartRepository = ServiceLocator.INSTANCE.resolve(CartRepository.class);
 	}
 
 	public Cart findOrCreateCartForClient(String email) {

@@ -27,7 +27,8 @@ public class CartServer implements Runnable {
     }
 
     private void configureContext() {
-	    new ApplicationContext(PersistenceProvider.getShopRepository()).apply();
+	    //new ApplicationContext(PersistenceProvider.getShopRepository()).apply();
+    	new ApplicationContext().apply();
     }
 
     private void startServer() {
@@ -56,10 +57,12 @@ public class CartServer implements Runnable {
     }
 
     private CartResource createCartResource() {
-		return new CartResource(PersistenceProvider.getCartRepository(), PersistenceProvider.getShopRepository());
+		//return new CartResource(PersistenceProvider.getCartRepository(), PersistenceProvider.getShopRepository());
+		return new CartResource();
 	}
 
 	private ShopResource createClientResource() {
-		return new ShopResource(PersistenceProvider.getShopRepository());
+		//return new ShopResource(PersistenceProvider.getShopRepository());
+		return new ShopResource();
 	}
 }
