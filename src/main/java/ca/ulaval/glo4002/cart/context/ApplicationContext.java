@@ -1,18 +1,23 @@
 package ca.ulaval.glo4002.cart.context;
 
-import ca.ulaval.glo4002.cart.domain.shop.ShopRepository;
 
 public class ApplicationContext {
-    private ShopRepository shopRepository;
+    //private ShopRepository shopRepository;
 
-    //public ApplicationContext(ShopRepository shopRepository) {
-    public ApplicationContext() {
+    /*public ApplicationContext(ShopRepository shopRepository) {
         this.shopRepository = shopRepository;
-    }
+    }*/
 
     public void apply() {
+    	
+    	if(System.getProperty("store").equalsIgnoreCase("xml")) {
+    		new XmlPersistanceContext().apply();
+    	} else {
+    		new InMemmoryPersistanceContext().apply();
+    	}
+    	
         if (System.getProperty("mode").equalsIgnoreCase("demo")) {
-            new DemoPrefillContext(shopRepository).apply();
+            new DemoPrefillContext().apply();
         }
     }
 }
