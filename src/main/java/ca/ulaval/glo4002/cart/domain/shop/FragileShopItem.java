@@ -62,4 +62,9 @@ public class FragileShopItem extends ShopItem {
     public int getPriceWithShipping() {
         return price + weight * PRICE_PER_KG + FLAT_PRICE;
     }
+
+	@Override
+	public String getSku() {
+		return itemSku;
+	}
 }

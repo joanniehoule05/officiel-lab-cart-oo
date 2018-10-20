@@ -64,4 +64,9 @@ public class PrimeShopItem extends ShopItem {
     public int getPriceWithShipping() {
         return price;
     }
+
+	@Override
+	public String getSku() {
+		return itemSku;
+	}
 }

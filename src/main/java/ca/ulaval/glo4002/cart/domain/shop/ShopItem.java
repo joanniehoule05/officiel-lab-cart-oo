@@ -11,4 +11,6 @@ public abstract class ShopItem {
     public abstract boolean hasSku(String sku);
 
     public abstract int getPriceWithShipping();
+    
+    public abstract String getSku();
 }

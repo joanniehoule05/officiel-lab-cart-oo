@@ -24,4 +24,8 @@ public class Cart {
 		this.items.add(item);
 	}
 
+	public  List<CartItem> listItems() {
+		return items;
+	}
+
 }

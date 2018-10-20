@@ -65,4 +65,9 @@ public class StandardShopItem extends ShopItem {
     public int getPriceWithShipping() {
         return price + weight * PRICE_PER_KG;
     }
+
+	@Override
+	public String getSku() {
+		return itemSku;
+	}
 }
